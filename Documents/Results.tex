@@ -1,0 +1,106 @@
+\documentclass[journal]{IEEEtai}
+
+\usepackage[colorlinks,urlcolor=blue,linkcolor=blue,citecolor=blue]{hyperref}
+
+\usepackage{color,array}
+\usepackage{cite}
+\usepackage{booktabs}% http://ctan.org/pkg/booktabs
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{caption}
+\usepackage{comment}
+
+%% \jvol{XX}
+%% \jnum{XX}
+%% \paper{1234567}
+%% \pubyear{2020}
+%% \publisheddate{xxxx 00, 0000}
+%% \currentdate{xxxx 00, 0000}
+%% \doiinfo{TQE.2020.Doi Number}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\setcounter{page}{1}
+%% \setcounter{secnumdepth}{0}
+
+
+
+\usepackage[backend=bibtex, style=ieee]{biblatex}
+\addbibresource{library}
+
+\begin{document}
+
+
+\title{Bankruptcy prediction in Colombian case, using multilayer perceptron trained with memetic algorithm} 
+
+
+\author{ Iván andrés Trujillo \IEEEmembership{PUJ MINTA}}
+
+\author{Student:Iván Andrés Trujillo Abella,\\
+
+\\
+\\
+
+Proffesors: Eliana María González Neira \& Gabriel Mauricio Zambrano Rey}
+\maketitle
+
+\begin{abstract}
+Literature about Bankruptcy prediction is still incipient, therefore this work try to fill this gap by using machine learning  and metaheuristics techniques to find an optimal set of  weights in a MLP model.
+\end{abstract}
+
+
+\begin{IEEEkeywords}
+Machine learning, Bankruptcy, Metaheuristics, Evolutionary Algorithms, Local Search, Memetic algorithms, Neural Networks, Multilayer Perceptron.
+\end{IEEEkeywords}
+
+
+
+
+
+\section{Results}
+
+
+Data we retrieved the information of SuperIntendencia de Sociedades (in Spanish) for the period 2016-2019.
+
+Classifying as bankrupt all firms  that enter a process of insolvency.
+
+
+
+
+We consider all firms during the period 2016-2019 that enter that one year to another in a process, and uses financial ratios of one and two year before of the occurrence of the event, for instance firms that have a normal state in 2018 and in 2019 enter  in a process uses the financial ratios of 2018 and 2017 to model the event in 2019.
+
+Were consider all satements that were presented in the december of each year, also were eliminated from data all events in 2016 of datasets to eliminated biased of financial ratios.
+
+According  to the following table the number of events per year were:
+
+According to the following Table 1:
+
+Using shapiro-test was evaluated the normallity distribution of variables and T-test and kruskall wallis were carried out were performed to test if there is significative difference among bankrupt and no-bankrupt firms in one and two years.
+
+
+
+
+\section{Benchmark}
+
+The models used to benchmark were: Decision tree, logistic regression and multilayer perceptron.
+
+
+
+
+
+\section{Appendix}
+The financial ratios used were:
+
+\begin{itemize}
+\item new
+\end{itemize}
+
+\newpage
+\printbibliography
+
+
+
+
+
+\end{document}

@@ -1,0 +1,464 @@
+\documentclass[journal]{IEEEtai}
+
+\usepackage[colorlinks,urlcolor=blue,linkcolor=blue,citecolor=blue]{hyperref}
+
+\usepackage{color,array}
+\usepackage{cite}
+\usepackage{booktabs}% http://ctan.org/pkg/booktabs
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{caption}
+\usepackage{comment}
+
+%% \jvol{XX}
+%% \jnum{XX}
+%% \paper{1234567}
+%% \pubyear{2020}
+%% \publisheddate{xxxx 00, 0000}
+%% \currentdate{xxxx 00, 0000}
+%% \doiinfo{TQE.2020.Doi Number}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\setcounter{page}{1}
+%% \setcounter{secnumdepth}{0}
+
+
+
+\usepackage[backend=bibtex, style=ieee]{biblatex}
+\addbibresource{library}
+
+\begin{document}
+
+
+\title{Bankruptcy prediction in Colombian case, using multilayer perceptron trained with memetic algorithm} 
+
+
+\author{ Iván andrés Trujillo \IEEEmembership{PUJ MINTA}}
+
+\author{Student:Iván Andrés Trujillo Abella,\\
+
+\\
+\\
+
+Proffesors: Eliana María González Neira \& Gabriel Mauricio Zambrano Rey}
+\maketitle
+
+\begin{abstract}
+Literature about Bankruptcy prediction is still incipient, therefore this work try to fill this gap by using machine learning  and metaheuristics techniques to find an optimal set of  weights in a MLP model.
+\end{abstract}
+
+
+\begin{IEEEkeywords}
+Machine learning, Bankruptcy, Metaheuristics, Evolutionary Algorithms, Local Search, Memetic algorithms, Neural Networks, Multilayer Perceptron.
+\end{IEEEkeywords}
+
+
+
+\section{Introduction}
+\IEEEPARstart{B}{ankruptcy} is an important economic problem, given that means the inability of a firm to fill its financial obligations either permanently or temporarily. Therefore the ability to predict it, allows  lenders to avoid important monetary losses, but this also has a social cost if we classify a company as risky when it is not, denying it the access to financing \cite{C1}.
+
+
+
+Since Altman's publication \cite{I2} on forecasting bankruptcy using Multiple Discriminant Analysis (MDA), more flexible and accurate methodologies have been considered in bankruptcy prediction, such as logistic regression \cite{I3} and hazard models \cite{I4}. Moreover, the problem also has attracted the use of Machine Learning (ML) techniques.  According to the findings described in  \cite{I5,I6,I7,I8} the ML algorithms outperform traditional statistical techniques in bankruptcy prediction, given that do not imply assumptions such as normality, linearity, and independence among predictors.
+
+
+
+\section{Neural Networks}
+
+Among the most popular ML techniques to predict bankruptcy appear the   Neural Networks (NN) that  have been shown outperform traditional statistical techniques \cite{I8}. However, its most common learning algorithms are based on gradient methods that could get trapped in local minima \cite{BPO}, this problem attracted the uses of metaheuristics as mechanism to reach global solutions.
+
+
+\subsection{Multilayer Perceptron(MLP)}
+
+MLP is a model of a Fed Forward Neural Network (FFNN) that given its universal approximator proof \cite{universal} has been used to implement metaheuristcs as learning algorithms.  Genetic Algorithms (GAs), Particle Swarm Optimization,  Cuckoo Search and Grey Wolf Optimizer are some examples of such metaheuristics used as learning algorithms to train MLPs \cite{REVM}.
+
+According to the Figure: \ref{MLPe} an MLP is composed of \textit{input, hidden} and \textit{output layers} that aim to mimic nervous system. Its objective is minimize a loss  function iteratively by updating  the weights $w_{j,i}$ based on the error.
+
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=0.38]
+\clip(-4,-3) rectangle (16,11.405623875713674);
+\draw [line width=2pt] (2,8) circle (0.9329523031752481cm);
+\draw [line width=2pt] (2,5) circle (0.9329523031752481cm);
+\draw [line width=2pt] (2,2) circle (0.9329523031752479cm);
+\draw [line width=2pt] (2,-1) circle (0.9329523031752479cm);
+\draw [line width=2pt] (8,7) circle (0.9329523031752488cm);
+\draw [line width=2pt] (8.076049514127371,-1.8685404705977158) circle (0.9329523031752486cm);
+\draw [line width=2pt] (8,1) circle (0.9329523031752486cm);
+\draw [line width=2pt] (8,4) circle (0.9329523031752488cm);
+\draw [line width=2pt] (12.951380454749632,4.024309772625184) circle (0.9329523031752488cm);
+\draw [line width=2pt] (8,10) circle (0.9329523031752488cm);
+\draw [line width=2pt] (2.9329523031752482,8)-- (7.067047696824751,10);
+\draw [line width=2pt] (2.9329523031752482,8)-- (7,7);
+\draw [line width=2pt] (2.9329523031752482,8)-- (7.067047696824751,4);
+\draw [line width=2pt] (2.9329523031752482,8)-- (7.067047696824751,1);
+\draw [line width=2pt] (2.9329523031752482,8)-- (7.1430972109521225,-1.8685404705977156);
+\draw [line width=2pt] (2.932952303175248,-1)-- (7.1430972109521225,-1.8685404705977156);
+\draw [line width=2pt] (2.932952303175248,-1)-- (7.067047696824751,1);
+\draw [line width=2pt] (2.932952303175248,-1)-- (7.067047696824751,4);
+\draw [line width=2pt] (2.932952303175248,-1)-- (7,7);
+\draw [line width=2pt] (2.932952303175248,-1)-- (7.067047696824751,10);
+\draw [line width=2pt] (2.932952303175248,2)-- (7.1430972109521225,-1.8685404705977156);
+\draw [line width=2pt] (2.932952303175248,2)-- (7.067047696824751,1);
+\draw [line width=2pt] (2.932952303175248,2)-- (7.067047696824751,4);
+\draw [line width=2pt] (2.932952303175248,2)-- (7,7);
+\draw [line width=2pt] (2.932952303175248,2)-- (7.067047696824751,10);
+\draw [line width=2pt] (2.9277414825076704,4.9015330429307875)-- (7.1430972109521225,-1.8685404705977156);
+\draw [line width=2pt] (2.9277414825076704,4.9015330429307875)-- (7.067047696824751,1);
+\draw [line width=2pt] (2.9277414825076704,4.9015330429307875)-- (7.067047696824751,4);
+\draw [line width=2pt] (2.9277414825076704,4.9015330429307875)-- (7,7);
+\draw [line width=2pt] (2.9277414825076704,4.9015330429307875)-- (7.067047696824751,10);
+\draw [line width=2pt] (8.932952303175249,10)-- (12.018428151574383,4.024309772625184);
+\draw [line width=2pt] (8.921909688733313,6.856882824861421)-- (12.018428151574383,4.024309772625184);
+\draw [line width=2pt] (8.932952303175249,4)-- (12.018428151574383,4.024309772625184);
+\draw [line width=2pt] (8.932952303175249,1)-- (12.018428151574383,4.024309772625184);
+\draw [line width=2pt] (9.00900181730262,-1.8685404705977158)-- (12.018428151574383,4.024309772625184);
+\draw (3.5696331709320224,11.144497206239892) node[anchor=north west] {\mathbf{$w_{j,i}$}};
+\draw (1.7469547111571024,8.927726106513646) node[anchor=north west] {$\mathbf{j}$};
+\draw (7.8553906304027805,10.87355851627335) node[anchor=north west] {$\mathbf{i}$};
+\draw (14.086980499633253,4.9375381270064045) node[anchor=north west] {$\mathit{\mathbf{y_{j}}}$};
+\end{tikzpicture}
+\caption{Multilayer Perceptron illustration}
+\label{MLPe}
+\end{figure}
+
+An example of the possible learning algorithm is Gradient Descent(GD):
+\begin{equation}
+\vec{w}_{t} = \vec{w}_{t-1}  - \alpha \nabla f( \vec{w}_{t-1})
+\end{equation}
+
+In summary, training an MLP is an optimization problem. However, as mentioned above, gradient-based methods are not guaranteed to find the global solution. Therefore, some works use metaheuristics such as genetic algorithms to train MLPs.
+
+\section{Genetic Algorithms}
+
+GAs are utilized for solving optimization problems and were designed based on the principles of Darwin's theory of evolution, for instance;\textit{"individuals with better features have major probability of have offspring"}.
+
+According to \cite{ES1} an elementary genetic algorithm can be described as follows: \textit{population initialization,  evaluation, selection, crossover, mutation and  replacement}.
+
+
+To implement a GA, two elements are required; a solution representation known as \textit{chromosome}  and a  measure of its capacity to solve the problem or  degree of accuracy to fit the environment named  \textit{fitness  value}.
+
+In MLP training, a potential chromosome representation can be illustrated as depicted in Figure \ref{chromosome}. In this representation, each $w_{i,j}$ represents a gene, and its specific value corresponds to an allele. In classification tasks, some studies utilize the Root Mean Squared Error (RMSE) as the fitness measure. Thus, the fitness function  for $i-th$ MLP in $t-th$ iteration will be written as  $f_{i}(t)$.
+
+
+
+
+
+\begin{figure}[h]
+\definecolor{uququq}{rgb}{0.25098039215686274,0.25098039215686274,0.25098039215686274}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+\clip(3.8720963149203325,1)rectangle (14,2.5);
+\fill[line width=2pt,color=uququq,fill=uququq,fill opacity=0.1] (5,2) -- (5,1) -- (12,1) -- (12,2) -- cycle;
+\draw [line width=2pt,color=uququq] (5,2)-- (5,1);
+\draw [line width=2pt,color=uququq] (5,1)-- (12,1);
+\draw [line width=2pt,color=uququq] (12,1)-- (12,2);
+\draw [line width=2pt,color=uququq] (12,2)-- (5,2);
+\draw (5.15 ,  1.6751183774857719) node[anchor=north west] {$w_{i,j}$};
+\draw (10.94,1.6651694715890561) node[anchor=north west] {$w_{j',m}$};
+\draw [line width=2pt] (6,2)-- (6,1);
+\draw [line width=2pt] (7,2)-- (7,1);
+\draw [line width=2pt] (8,2)-- (8,1);
+\draw [line width=2pt] (9,2)-- (9,1);
+\draw [line width=2pt] (10,2)-- (10,1);
+\draw [line width=2pt] (11,2)-- (11,1);
+\draw (5.379355558272762,2.431235225636164) node[anchor=north west] {$1$};
+\draw (8.418746309719412,2.376516243204228) node[anchor=north west] {$...$};
+\draw (6.379220600892691,2.44118413153288) node[anchor=north west] {$2$};
+\draw (7.384060096460978,2.4262607726878063) node[anchor=north west] {$3$};
+\draw (9.229582140301742,2.3964140549976594) node[anchor=north west] {$n-2$};
+\draw (10.209549371128238,2.406362960894375) node[anchor=north west] {$n-1$};
+\draw (11.33875019040547,2.3814906961525857) node[anchor=north west] {$n$};
+\draw (6.03, 1.6601950186406984) node[anchor=north west] {$w_{i',j'}$};
+\draw (7.03, 1.6601950186406984) node[anchor=north west] {$w_{i',k}$};
+\draw (9.05, 1.6601950186406984) node[anchor=north west] {$w_{j,p}$};
+\draw (10.,1.6601950186406984) node[anchor=north west] {$w_{j',p'}$};
+\draw (8.15,1.6353227538989092) node[anchor=north west] {$...$};
+\end{tikzpicture}
+\caption{Chromosome representation of a MLP}
+\label{chromosome}
+\end{figure}
+
+There are different ways to implement each step in GAs. One possible combination of these steps is described as follows:
+
+\subsubsection{Population initialization}
+Generate $T$ random samples of chromosomes of the same longitude $n$.
+
+\subsubsection{Evaluation}
+Each solution candidate have associated a fitness value. RMSE is defined as:
+
+\begin{equation}
+    f_{i}(t) = \sqrt{ \frac{1}{m} \sum_{j=1}^{m}  (y_{j} - \hat{y_{j}})^{2}}
+\end{equation}
+
+Here, $m$ represents the total number of observations or patterns in the dataset. $y_{j}$ refers to the target value (for instance if the firm is bankrupt or not), and $\hat{y}_{j}$ represents the predicted classification using the weights of the $i-th$ MLP.
+
+\subsubsection{Parents selection}
+Select possible chromosomes as parents according to its fitness;
+\begin{equation}
+P_{x_{i}} = \frac{f_{i}(t)}{\sum_{j}^{n} f_{j}(t)}
+\end{equation}
+thus $P_{x_{i}}$ represent the probability that the a chromosome will be selected as parent (to be selected to interchange genetic material).
+
+\subsubsection{Chromosomal crossover}
+Interchange genetic material between two parents to create offspring,  choosing a random locus (position in chromosome), now  $\alpha_{a}$ and $\alpha_{b}$ are parents coded as indexing arrays, if the locus is equal to $\pi$ then the offspring will be $\alpha_{a}[: \pi]$  concatenate with $\alpha_{b}[\pi:]$.
+
+\subsubsection{Mutation}
+Adding random mutations produce a search of solutions, this process could be summarized as change the allele in a random locus.
+
+\begin{equation}
+w_{i,j}  = w_{i,j} + N(\bar{x},\sigma)
+\end{equation}
+
+\subsubsection{new generation}
+Which of the offspring and parent will be selected to be the population in the following generation, an easy strategy is replace all current population by the offspring.
+
+All steps are repeated until a stop criteria is reached, for instance loss of diversity or a number of maximum of iterations.
+
+
+The \textit{implicit parallelism}, the lack of constraints on differentiability of functions to optimize, and the fact that a full understanding of the phenomena is not necessary make GAs an appealing learning algorithm for training MLPs.
+
+
+\section{Related works}
+
+Pendharkar \& Rodger \cite{GR1} used a GA to train an MLP with the aim of predicting bankruptcy in a sample of 100 firms, where half were considered bankrupt and the other half non-bankrupt. They also compared the performance of different crossover operators: GA(A), GA(O) and GA(U) that uses arithmetic, one-point and uniform crossover operators respectively. They also used a MLP with backpropagation (MLPBP) as a reference.
+
+
+
+ 
+
+The variables used as input to train the models were: \textit{ the relation of earnings before interest to taxes, the relation of earnings before interest and taxes to assets, the relation of current assets to current liabilities, the relation of retained earnings to assets, and the relation of market value of equity to book value debt.} The results of correct classifications on the test data were the same for MLPBP, GA(A), and GA(O). However, GA(U) outperformed the aforementioned models by two percentage points (60\%), which could be considered significant in a financial context.
+ 
+
+Since the late 1980s, GAs have played an important role in training NNs due to their ability to diversify the search and spend less time reaching the region where the global optimum is located. However, GAs are not as fast as gradient-based methods in finding the exact point  \cite{NI*}. To leverage the exploration capabilities of metaheuristics and the exploitation capabilities of local search algorithms (such as gradient-based techniques), some studies have used hybridizations of these approaches to enhance the quality of the results. For instance:
+
+García et al. \cite{MMN} uses the Gravitational Search Algorithm and the Chaotic Gravitational Search Algorithm each one integrated with Quasi-Newthon (gradient-based algorithm) as learning algorithms to train a  set of MLPs, with the objective of taking advantage of the global and local search ability that offer each methodology, namely  using the fast rate of convergence  of the gradient method avoiding local optima with the metaheuristics. The results demostrated the superiority of proposed \textit{memetic chaotic gravitational search algorithm}  regarding another metaheruistics such as PSO and GAs  in the XoR problem, in a classification problem and in the  approximation of a continuous function as well as in speed as convergence and quality of solutions.
+
+
+In the field of bankruptcy  Naveen \& Rao \cite{memetic} uses an hybridization of  Cukoo Search algorithm and Particle Swarm Optimization to predict bankruptcy assessing its performance using three different databases and comparing the results of  the proposed methodology with a decision tree. However, the results were inconclusive. While the model showed significantly better performance in one dataset, it demonstrated equal performance in another dataset and lower performance in a third dataset.
+
+
+
+\section{Memetic algorithms}
+
+In general terms, a Memetic Algorithm (MA) can be considered as a combination of two algorithms: an Evolutionary Algorithm (EA) and a Local Search (LS) that examines a neighborhood to determine if there is a better solution \cite{memes1}.
+
+\begin{equation}
+    EA + LS \subset MA
+\end{equation}
+An example of a simple MA implementation considers all the steps mentioned earlier for a GA, but applying a LS in the operations of \textit{Chromosomal crossover} and \textit{mutation} to improve the quality of solutions in each step.
+
+
+\section{Colombian bankruptcy studies}
+
+In Colombia bankruptcy prediction has been study mainly with  traditional statistical techniques, such as MDA, logistic and probit regression; however, there are few studies comparing  the performance between traditional statistical and Ml techniques. Nevertheless, is important remark that none of the ML techniques used by the works presented here  are Neural Networks.
+
+Most of the works are elaborated with financial statements specifically using financial ratios retrieved from Super Intendencia De Sociedades (in spanish).
+\begin{table}[h]
+\centering
+\begin{tabular}{ccl}
+\hline
+\textbf{Reference} & \textbf{Year} & \multicolumn{1}{c}{\textbf{Methodology}} \\ \hline
+\cite{C8} & 2002 & MDA \\
+\cite{C7} & 2003 & Probit heterocedastic \\
+\cite{C11} & 2009 & Cox regression \\
+\cite{C14} & 2013 & Logistic regression \\
+\cite{C13} & 2013 & \begin{tabular}[c]{@{}l@{}} \tabitem Logistic regression\\ \tabitem Probit regression 
+\\
+\end{tabular} \\
+\cite{C1} & 2017 & \begin{tabular}[c]{@{}l@{}} \tabitem Logistic regression\\  \tabitem Adtive generalized model\\ \tabitem  Genralized model of extreme value \\ \tabitem Binary generalized model of extreme value\end{tabular} \\
+\cite{C2} & 2017 & Rough sets \\
+\cite{C15} & 2019 & \begin{tabular}[c]{@{}l@{}} \tabitem Logistic regression \\ \tabitem Boosting algorithm\end{tabular} \\
+\cite{C16} & 2019 & Logistic regression and another variants. \\
+\cite{C3} & 2020 & \begin{tabular}[c]{@{}l@{}} \tabitem Logistic regression\\ \tabitem Boosting algorithm\\ \tabitem Support vector machine\end{tabular} \\ \hline
+\end{tabular}
+\caption{Source: Own elaboration}
+\label{tab:summary-colombia}
+\end{table}
+
+
+In a short overview of some found articles: the first works is \cite{C8} that tries to discriminate between weak and strong companies using the Altman model, defining in an ambiguous way the classification of "strong-weak" firms and using an MDA model find a specificity and sensitivity of 82\% and 100\% respectively.
+
+García et al. \cite{C1} uses the legal declaration of bankruptcy or the declaration of started a  restructuring process, and using financial ratios from one year before to bankruptcy and estimating a heterocedastic probit model, shows the variables of \textit{profitability ratio and financial indebtedness of the asset} as significant with a specificity and sensitivity of 82.4\% and 81.5\%.
+
+Peréz et al. \cite{C13} make a benchmark among logit and probit in a final sample of 631 bankrupt and 631 no bankrupt. The results in test validation, indicated that the best performance is obtained with the logit model, with a sensitivity of 77\% and a specificity of 88\%.   In contrast \cite{C16} make a benchmark among different logit models  finded that the \textit{mixted logit model} outperform the traditional logistic model, given that also can capture outlier values.
+
+According to Table \ref{tab:summary-colombia} the only works that make a benchmark among traditional and not traditional technique are \cite{C3,C15}.
+
+
+Mejía et al. \cite{C3} using information retrieved from Super Intendencia de Sociedades for 58 firms that entered a process of restruncturing and  11,754 that did not. Performs a benchmark between logistic regression, boosting algorithm and support vector machine.
+
+Using 10 financial ratios, including \textit{relation operational net working capital to sales, free cash flow, asset turnover, return on assets, return on equity, debt to assets ratio, debt concentration, gross profit margin, operating profit margin, net profit margin} and using  accuracy as assessment metric,  it was found that boosting(92.1\%) outperform logistic(54.1\%) and support vector machine (50.0\%) to predict bankrupt with a year of anticipation.
+
+Mejía \& Castaño \cite{C15} using financial statements retrieved from Super Super Intendencia de Sociedades, to carry out a benchmark among Boosting and Logistic regression, with the financial ratios in 2017 for companies that began a restructuring process in 2018, in this work were used 15 financial ratios for 127 bankrupt companies and 2988 no-bankrupt companies.  Using sensitivity it was found that boosting (80\%) outperform logist regression (0\%), the type two error was 19\% for boosting and 100\% for logistic regression, the authors claim that, this is given logistic can not handle well imbalance datasets.
+
+
+The results confirm the superiority of ML techniques to predict bankruptcy; however, there is not yet sufficient comparasion of different ML techniques in the country.
+
+
+Given the gap between international and Colombian research on bankruptcy prediction, and the attractiveness  of metaheuristics as algorithms to train networks (given they do not imposed differentiability on loss function and could optimized the network architecture and weights simultaneously). We proposed to test an evolutionary strategy with a no gradient search local technique, to  train a MLP model in Colombian bankruptcy prediction.
+
+
+
+
+\textbf{Main goal:} To compare the prediction performance of a memetic MLP with state-of-the-art methodologies in Colombian bankruptcy.
+
+
+\begin{table}[h]
+\begin{tabular}{l}
+\hline
+\multicolumn{1}{c}{Specific Objectives}                                                                                                               \\ \hline
+\begin{tabular}[c]{@{}l@{}}Retrieve and consolidate information  to understand data in bankruptcy context.
+\end{tabular} \\
+Design and implementation of the memetic algorithm.                                                                                                  \\
+Benchmark among models and validation with another datasets of bankruptcy.                                                                             \\ \hline
+\end{tabular}
+\end{table}
+
+ 
+ 
+
+
+
+\section{Methodology}
+
+\subsection{ \textbf{Retrieve and consolidate information to understand data in bankruptcy context}}
+
+\subsubsection{ Retrieve Data}
+The data is public and is available in the official web site of Superintendencia de sociedades, for this work  will be retrieved the years 2018 and 2019.
+
+
+
+\subsubsection{Business understanding}
+
+Bankruptcy have social and economical cost, both costs could be measure among error type 1 and error type 2, the first measure is the cost derived  from classify a bankrupt as no-bankrupt,  the other is the cost of classify  no-bankrupt as bankrupt, the aim is construct a model that allow us predict with anticipation bankruptcy to reduce those errors using financial ratios, therefore the financial ratios mus be constructed based on related works and financial theory.
+\subsubsection{Comparation financial ratios among bankrupt and no-bankrupt}
+The table one is constructed to indicate if there are significative differences among the main financial ratios used in the literature about bankruptcy prediction between bankrupt and no-bankrupt, first is evaluated the normality using shapiro-wilk test if the varaible is determined normal the t-test will be used, otherwise Kruskall-Wallis will be used. significance will be established with  $p<0.05$.
+
+\subsubsection{Bias selection}
+to assess if exist \texit{bias selection} we constructed a comparative table but among groups that fill and not fill inclsusion-exclusion criteria evaluated the normality using shapiro-wilk test if the varible is determined normal the t-test will be used, otherwise Kruskall-Wallis will be used. signficance will be established with  $p<0.05$.
+
+\subsection{\textbf{Design and implementation of the memetic algorithm}}
+
+\subsubsection{Study theorical and empirical properties of local searchs} 
+Understand theorical and empirical properties of some local search techniques to integrate with genetic algorithms to train MLP.
+
+\subsubsection{Work sessions with professors}
+Sessions to understand and discuss  how integrate the methodologies.
+
+\subsubsection{Implementation}
+The implementation will be using Python to solve and test the performance on XOR problem.
+
+
+
+\subsection{ \textbf{Benchmark among models and validation with another datasets of bankruptcy}}
+
+
+\subsubsection{Missing values}
+Using \textit{KKN imputation} in minority class and remove observations majority class.
+
+\subsubsection{Standardization and outlier}
+The variables are transformed in terms of standard deviations namely using the following equation:
+\begin{equation}
+z_{i} = \frac{x_{i} - \bar{x}}{\sigma_{x}}
+\end{equation}
+After using \textit{Shevyshev theorem} will be studied possible outliers in variables given this theorem  state that \textit{The probability of a observation is to standard deviaton $k$ of mean is:}
+\begin{equation}
+1 - \frac{1}{k^{2}}
+\end{equation}
+
+
+\subsubsection{Balancing data} The balancing strategy will be \textit{SMOTE+Tomek link} given that  consider \textit{under and over sampling}
+
+
+\subsubsection{Benchmark models}
+The models selected to perform the benchmark are; \textit{logistic regression, support vector machine, boosting and Backpropagation MLP}.
+
+
+\subsubsection{feature selection}
+The selection of variables will be performed with \textit{ Random Forest-Recursive Feature Elimination algorithm}.
+
+
+
+\subsubsection{Hyperparameter tunning}
+To perform hyperparameter tunning a $k=10$ fold cross validation will be implemented.
+
+
+\subsubsection{Evaluation}
+The total data is split in 80\% to training and 20\% to test, an important point is the test data will be selected in equal proportion to get a more accurate evaluation, the model with the lowest type 1 and 2 error will be selected.
+
+The measures of performance are constructed with the following confusion matrix; 
+\begin{table}[h]
+\centering
+\begin{tabular}{ccc}
+	\hline
+ & Bankrupt & No-Bankrupt \\ \hline
+Positive prediction & True Positive & False Positive \\
+Negative prediction & False Negative & True Negative \\ \hline
+\end{tabular}
+\caption{Confusion matrix}
+\label{confusemat}
+\end{table}
+
+\begin{equation}
+Precision = \frac{TP}{TP + FP}
+\end{equation}
+
+
+\begin{equation}
+Recall = \frac{TP}{TP+ FN}
+\end{equation}
+
+
+
+\begin{equation}
+F1 = 2	\left( \frac{Precision*Recall}{Precision + Recall} \right)
+\end{equation}
+
+
+\begin{equation}
+\text{Type 1 } = \frac{FP}{FP + TN}
+\end{equation}
+
+
+\begin{equation}
+\text{Type 2 } = \frac{FN}{TP + FN}
+\end{equation}
+
+
+
+\section{Schedule}
+The proposed timeline to perform each activity is presented in Table \ref{Schedule}  and is planned to be completed in two semesters.
+
+
+\begin{table*}[t]
+\begin{tabular}{cll}
+\hline
+\textbf{Week(s)} & \multicolumn{1}{c}{\textbf{Activities}}                 & \multicolumn{1}{c}{\textbf{Description}}                                         \\ \hline
+{[}1-5{]}        & Retrieve, preprocessing, merging and understanding data & \begin{tabular}[c]{@{}l@{}}Retrieve the information from the official site of Super Intendencia de Sociedades,\\ Consolidate data to construct financial ratios,  \\ Compare financial ratios among bankrupt and no-bankrupt firms,\\ Determine if there is  selection bias in data, \\ Remove missing values, \\ Sandardize variables and determine outliers,\\ Balance data.\end{tabular} \\
+{[}6-16{]}       & Design and implementation of the proposed algorithm     & Design of the GA algorithm with local search to train MLP                                                                                                                                                                      \\
+{[}17-24{]}      & Experiments and benchmark                               & \begin{tabular}[c]{@{}l@{}}Feature selection, \\ Hyperparameter tuning ,\\ Benchmark with:\\ logistic regression, \\ boosting, \\ supportvector machine\\ and backpropagation multilayer perceptron.\end{tabular}                                                                                                                                                                           \\
+{[}25-28{]}      & Validation                                              & Validation of the algorithm with another bankruptcy  datasets.                                                                                                                                                                                                                                                                                                                              \\
+{[}28-30{]}      & Write results and discussion                            & Write results and discussion  in the official document.                                                                                                                                                                                                                                                                                                                                     \\
+{[}30-36{]}      & Submit the article to a journal ranked in Scimago       & Search and submit the manuscript to a journal                                                                                                                                       \\ \hline
+\end{tabular}
+\caption{Schedule}
+\label{Schedule}
+\end{table*}
+
+
+
+
+
+
+
+\newpage
+\printbibliography
+
+
+
+
+
+\end{document}

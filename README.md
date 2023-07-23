@@ -26,3 +26,7 @@ ESF-Pymes-2019
 ERI-Pymes-2019.
 
 
+# Documents
+In this folder find the files to write the article with extension .tex
+
+    We are working in results.tex
