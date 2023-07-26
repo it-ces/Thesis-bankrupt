@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.7.17)  22 JUL 2023 14:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.7.17)  25 JUL 2023 17:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1094,12 +1094,16 @@ Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 96.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 96.
 
-LaTeX Warning: Empty bibliography on input line 100.
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 82.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 99.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 99.
+
+LaTeX Warning: Empty bibliography on input line 103.
 
 [1{C:/Users/iván/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/iv
 án/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
@@ -1107,27 +1111,28 @@ LaTeX Warning: Empty bibliography on input line 100.
 
 ] (Results.aux)
 Package rerunfilecheck Info: File `Results.out' has not changed.
-(rerunfilecheck)             Checksum: F00BC0280BCE73DE8494ADA16B1D82C9;249.
+(rerunfilecheck)             Checksum: C5C6DA3431F1F58117CD3307A62A3FD8;404.
 Package logreq Info: Writing requests to 'Results.run.xml'.
 \openout1 = `Results.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 28404 strings out of 476331
- 553630 string characters out of 5787765
- 1860660 words of memory out of 5000000
- 48455 multiletter control sequences out of 15000+600000
- 541596 words of font info for 80 fonts, out of 8000000 for 9000
+ 28407 strings out of 476331
+ 553677 string characters out of 5787765
+ 1861660 words of memory out of 5000000
+ 48456 multiletter control sequences out of 15000+600000
+ 542732 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,6n,89p,1879b,805s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/iván/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmsy7.pfb><C:/Users/iván/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/u
 tmb8a.pfb><C:/Users/iván/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/u
 tmbi8a.pfb><C:/Users/iván/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/
-utmr8a.pfb>
-Output written on Results.pdf (1 page, 55750 bytes).
+utmr8a.pfb><C:/Users/iván/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/
+utmri8a.pfb>
+Output written on Results.pdf (1 page, 66672 bytes).
 PDF statistics:
- 48 PDF objects out of 1000 (max. 8388607)
- 5 named destinations out of 1000 (max. 500000)
- 37 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 57 PDF objects out of 1000 (max. 8388607)
+ 6 named destinations out of 1000 (max. 500000)
+ 45 words of extra memory for PDF output out of 10000 (max. 10000000)
 
