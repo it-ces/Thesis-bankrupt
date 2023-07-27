@@ -30,3 +30,15 @@ ERI-Pymes-2019.
 In this folder find the files to write the article with extension .tex
 
     We are working in results.tex
+
+
+# Event 
+
+Take in mind the following:   
+                                In database 2019 appear 343 firms that started a process
+                                of reorganization and 152 of reestructuration, if 
+                                we want modelling the problem of bankrupt we need these firms 
+                                not appear in 2018 with a process of insolvency, given that the ratios could be altered
+                                we need indentify wich year the firm beginning the process.
+
+                                * Take in mind that also need drop bankrupt process in 2016..
