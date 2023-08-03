@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.7.17)  25 JUL 2023 17:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.7.17)  3 AUG 2023 12:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -967,7 +967,7 @@ Package: blx-case-expl3 2023/03/05 v3.19 expl3 case changing code for biblatex
 ))
 \@quotelevel=\count435
 \@quotereset=\count436
- (Results.aux)
+ (Results.aux (undersamplinglag2results.aux))
 \openout1 = `Results.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
@@ -989,7 +989,8 @@ LaTeX Font Info:    ... okay on input line 32.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 32.
 LaTeX Font Info:    ... okay on input line 32.
 Package hyperref Info: Link coloring ON on input line 32.
- (Results.out) (Results.out)
+ (Results.out)
+(Results.out)
 \@outlinefile=\write6
 \openout6 = `Results.out'.
 
@@ -1098,18 +1099,53 @@ or  <return>  to continue without it.
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 82.
 
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 99.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 99.
-
-LaTeX Warning: Empty bibliography on input line 103.
-
 [1{C:/Users/iván/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/iv
 án/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
 
 
-] (Results.aux)
+
+]
+\openout2 = `undersamplinglag2results.aux'.
+
+
+(undersamplinglag2results.tex
+! Undefined control sequence.
+<recently read> \thcenter 
+                          
+l.2 \thcenter
+             
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 3.
+
+Overfull \hbox (67.1348pt too wide) in paragraph at lines 3--11
+[][] 
+ []
+
+) [2
+
+
+]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 101.
+
+
+LaTeX Warning: Empty bibliography on input line 105.
+
+[3
+
+
+
+] (Results.aux (undersamplinglag2results.aux))
 Package rerunfilecheck Info: File `Results.out' has not changed.
 (rerunfilecheck)             Checksum: C5C6DA3431F1F58117CD3307A62A3FD8;404.
 Package logreq Info: Writing requests to 'Results.run.xml'.
@@ -1117,22 +1153,22 @@ Package logreq Info: Writing requests to 'Results.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 28407 strings out of 476331
- 553677 string characters out of 5787765
- 1861660 words of memory out of 5000000
- 48456 multiletter control sequences out of 15000+600000
- 542732 words of font info for 81 fonts, out of 8000000 for 9000
+ 28456 strings out of 476331
+ 555246 string characters out of 5787765
+ 1860660 words of memory out of 5000000
+ 48489 multiletter control sequences out of 15000+600000
+ 544555 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,6n,89p,1879b,805s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,9n,89p,1879b,805s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/iván/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmsy7.pfb><C:/Users/iván/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/u
 tmb8a.pfb><C:/Users/iván/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/u
 tmbi8a.pfb><C:/Users/iván/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/
 utmr8a.pfb><C:/Users/iván/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/
 utmri8a.pfb>
-Output written on Results.pdf (1 page, 66672 bytes).
+Output written on Results.pdf (3 pages, 68885 bytes).
 PDF statistics:
- 57 PDF objects out of 1000 (max. 8388607)
- 6 named destinations out of 1000 (max. 500000)
+ 68 PDF objects out of 1000 (max. 8388607)
+ 9 named destinations out of 1000 (max. 500000)
  45 words of extra memory for PDF output out of 10000 (max. 10000000)
 
