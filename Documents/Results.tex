@@ -54,7 +54,6 @@
 
 Proffesors: Eliana María González Neira \& Gabriel Mauricio Zambrano Rey}
 \maketitle
-
 \begin{abstract}
 Literature about Bankruptcy prediction is still incipient, therefore this work try to fill this gap by using machine learning  and metaheuristics techniques to find an optimal set of  weights in a MLP model.
 \end{abstract}
@@ -63,7 +62,6 @@ Literature about Bankruptcy prediction is still incipient, therefore this work t
 \begin{IEEEkeywords}
 Machine learning, Bankruptcy, Metaheuristics, Evolutionary Algorithms, Local Search, Memetic algorithms, Neural Networks, Multilayer Perceptron.
 \end{IEEEkeywords}
-
 
 
 
@@ -107,7 +105,7 @@ Financial ratios could be categorized in some groups, for instance \textit{liqui
 
 
 
-\subsubsection{liquidity ratios}
+\subsubsection{Liquidity ratios}
 Measure the firm ability to pay its financial obligations;
 Current ratio and Ratio of short-term liabilities were used.
 \end{itemize}
@@ -124,7 +122,7 @@ Debt equity ratio and Indebtedness ratio were used.
 
 Were also added two classic financial ratios in bankruptcy prediction used by Altman; named in this work Altman $x_{1}$ and Altman $x_{2}$.
 
-The following Table (\ref{ratios}) described each one of the aforementioned ratios, according to NIFF financial statements retrieved for this work.
+The Table (\ref{ratios}) described each one of the aforementioned ratios, according to NIFF financial statements retrieved for this work.
 
 \begin{table*}[!h]
 \caption{Financial ratios definition}
@@ -165,39 +163,78 @@ Altman $x_{2}$
 \end{table*}
 
 
-\section{Modeling prediction}
-The models used to compare prediction performance on bankruptcy were: Decision tree, logistic regression and multilayer perceptron.
+\section{Modelling prediction}
 
- was constructed a grid search.
+The models used to predict  bankruptcy were: decision tree, logistic regression, multilayer perceptron and the proposed memetic neural network.
 
-\subsection{Train and test}
 
-We used 70\% to train and 30\% to test.
 
+\subsection{Memetic Neural Network}
+
+Proposed algorithm...
 
 \subsection{Hyperparameter tunning}
-
-\subsection{Logistic regresion}
-
-
-\subsection{Multilayer perceptron}
+To perform the hyperparameter tunning a $k=10$ fold cross validation will be implemented, and the search of the space was by grid search.
 
 
-\subsection{Decision tree}
+\subsection{Evaluation}
+The total data is split in 70\% to training and 30\% to test, an important point is the test data will be selected in equal proportion to get a more accurate evaluation.
+
+\subsubsection{Metrics}
+
+
+The measures of performance are constructed with the table (\ref{confusemat}).
+
+\begin{table}[h]
+\caption{Confusion matrix}
+\label{confusemat}
+\centering
+\begin{tabular}{ccc}
+	\hline
+ & Bankrupt & No-Bankrupt \\ \hline
+Positive prediction & True Positive & False Positive \\
+Negative prediction & False Negative & True Negative \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{equation}
+Precision = \frac{TP}{TP + FP}
+\end{equation}
+
+
+\begin{equation}
+Recall = \frac{TP}{TP+ FN}
+\end{equation}
+
+
+
+\begin{equation}
+F1 = 2	\left( \frac{Precision*Recall}{Precision + Recall} \right)
+-\end{equation}
 -
+
+\begin{equation}
+\text{Type 1 } = \frac{FP}{FP + TN}
+\end{equation}
+
+
+\begin{equation}
+\text{Type 2 } = \frac{FN}{TP + FN}
+\end{equation}
+
+
 	
 
 \subsection{Balance data}
-
-To handle the unbalanced data used \text{undersampling}
+To handle the unbalanced data used \text{undersampling}.
 
 
 \section{Results}
 
-From  a total sample of 27,210 firms, of which 1,279 were classified as bankrupt, only 16,488 of which 318 were bankrupt represented the final sample. 
+From  a total sample of 27,210 firms, of which 1,279 were classified as bankrupt, and after of apply exclusion criteria was obtained a final sample of 16,488 of which 318 were bankrupt.
 
 
-The following Figure (\ref{flowchart}) describe the process to obtain the final data to modelling.
+The Figure (\ref{flowchart}) describe the process to obtain the final sample.
 
 
 \usetikzlibrary{shapes.geometric, arrows}
@@ -231,14 +268,14 @@ fill=gray!30]
 
 \tikzstyle{arrow} = [thick,->,>=stealth]
 
-\begin{figure}[h]
+\begin{figure}[!h]
 \caption{Flowchart processing data}
 \label{flowchart}
 
 \begin{tikzpicture}[node distance=2cm]
 \node (box1) [process] {Initial database  
 N = 27,210 
-Bankrupt = 1279};
+Bankrupt = 1,279};
 -\node (text1) [decision, left of=box1, xshift = -3cm] {Unique firms by period};
 ++
 \node (box2) [process, below of=box1] {N = 26,702 
@@ -275,26 +312,17 @@ Bankrupt = 318};
 \end{figure}
 
 
+Financial ratios by itself no are very informative, must be exist a benchmark point, in this case we compare the level of ratios among the two groups.
+
+The expected results are a lower level of  \textit{gross profit margin, net profit margin, return on equity, return on assets, current ration} in bankruptcy group regarding to the non-bankrupt group. Otherwise, a major level of \textit{indebtedness ratio, debt equity ratio, ratio of short-term liabilities} in bankrupt group.
 
 
-
-
-The Figure (\ref{corrmatrix})  show the  spearman coefficient among numerical financial ratios.
-
-
-\begin{figure}[h]
-\caption{Spearman correlation in predictor variables}
-\label{corrmatrix}
-\includegraphics[scale=0.38]{Matrix.eps}
-\end{figure}
-
-
-The following Table \ref{tableone} show the difference among the financial ratios of one year before of the bankrupt and the mean of the ratios by the period of activity in no-bankrupt firms.
-The results indicate that there are significative difference in all ratios, and no independence among the event and the sector.
+The Table (\ref{tableone}) show the difference among the financial ratios of one year before of the bankrupt and the mean of the ratios by the period of activity of non-bankrupt firms.
+The results indicate that there are significance difference in all ratios, and no independence among the event and the sector.
 
 
 % word with c and l
-\begin{table*}[h]
+\begin{table*}[!h]
     \caption{Year of bankrupt, financial ratios and sector among groups}
     \label{tableone}
 \setlength\tabcolsep{15pt}
@@ -313,14 +341,16 @@ n &  &  & 16806 & 16488 & 318 &  \\
  & 2018.0 &  & 96 (0.57) &  & 96 (30.19) &  \\
  & 2019.0 &  & 123 (0.73) &  & 123 (38.68) &  \\
  
-GPM, median [Q1,Q3] &  & 0 & 0.31 [0.18,0.56] & 0.32 [0.18,0.56] & 0.26 [0.14,0.41] & <0.001 \\
+GPM, median [Q1,Q3] &  & 0 & 0.31 [0.18,0.56] & 0.31 [0.18,0.56] & 0.26 [0.14,0.41] & <0.001 \\
 NPM, median [Q1,Q3] &  & 0 & 0.03 [0.00,0.08] & 0.03 [0.00,0.08] & -0.02 [-0.18,0.03] & <0.001 \\
 ROE, median [Q1,Q3] &  & 0 & 0.07 [0.01,0.16] & 0.07 [0.01,0.16] & 0.01 [-0.18,0.09] & <0.001 \\
 ROA, median [Q1,Q3] &  & 0 & 0.03 [0.00,0.06] & 0.03 [0.00,0.07] & -0.01 [-0.09,0.01] & <0.001 \\
 IR, median [Q1,Q3] &  & 0 & 0.53 [0.32,0.72] & 0.52 [0.32,0.72] & 0.74 [0.59,0.88] & <0.001 \\
+DER, median [Q1,Q3] &  & 0 & 1.01 [0.40,2.25] & 0.99 [0.40,2.22] & 1.91 [0.90,4.23] & <0.001 \\
 RSL, median [Q1,Q3] &  & 0 & 0.75 [0.45,0.98] & 0.75 [0.45,0.98] & 0.53 [0.28,0.87] & <0.001 \\
+CR, median [Q1,Q3] &  & 0 & 1.70 [1.14,2.96] & 1.71 [1.15,2.98] & 1.26 [0.74,2.23] & <0.001 \\
 Ax1, median [Q1,Q3] &  & 0 & 0.22 [0.04,0.43] & 0.22 [0.04,0.43] & 0.09 [-0.08,0.28] & <0.001 \\
-Ax2, median [Q1,Q3] &  & 0 & 0.19 [0.04,0.40] & 0.19 [0.05,0.40] & 0.04 [-0.12,0.18] & $<$0.001 \\
+Ax2, median [Q1,Q3] &  & 0 & 0.19 [0.04,0.40] & 0.19 [0.05,0.40] & 0.04 [-0.12,0.18] & <0.001 \\
 
 
 \multirow[t]{20}{*}{Sector, n (\%)} & A & 0 & 1012 (6.02) & 990 (6.00) & 22 (6.92) & <0.001 \\
@@ -347,13 +377,25 @@ Ax2, median [Q1,Q3] &  & 0 & 0.19 [0.04,0.40] & 0.19 [0.05,0.40] & 0.04 [-0.12,0
 \end{tabular*}
 \end{table*}
 
+The empirical result are coincident with the expected results. Notice that Long debt is major in the No-bankrupt group.
 
 
-The following table (\ref{imbalanced}) show us the performance of the models with the variables used to predict bankruptcy, the result indicate a lower performance to predict correctly the bankrupt firms.
+The Figure (\ref{corrmatrix})  show the  spearman coefficient among numerical financial ratios.
+
+
+\begin{figure}[!h]
+\caption{Spearman correlation in predictor variables}
+\label{corrmatrix}
+\includegraphics[scale=0.38]{Matrix.eps}
+\end{figure}
 
 
 
-\begin{table*}[h]	
+The Table (\ref{imbalanced}) show us the performance of the models with the variables used to predict bankruptcy, the result indicate a lower performance to predict correctly the bankrupt firms.
+
+
+
+\begin{table*}[!h]	
 	\caption{Models performance over imbalanced data}
     \label{imbalanced}
 \ContinuedFloat
@@ -365,18 +407,19 @@ The following table (\ref{imbalanced}) show us the performance of the models wit
  &No-Default & Default & No-Default & Default & No-default & Default \\
 \midrule
 precision & 0.98 & 0.15 & 0.98 & 0.06 & 0.98 & 0.00 \\
-recall & 1.00 & 0.03 & 0.94 & 0.18 & 1.00 & 0.00 \\
-f1-score & 0.99 & 0.05 & 0.96 & 0.09 & 0.99 & 0.00 \\
-support & 4947.00 & 95.00 & 4947.00 & 95.00 & 4947.00 & 95.00 \\ 
+recall & 1.00 & 0.03 & 0.94 & 0.21 & 1.00 & 0.00 \\
+f1-score & 0.99 & 0.05 & 0.96 & 0.10 & 0.99 & 0.00 \\
+support & 4945.00 & 95.00 & 4945.00 & 95.00 & 4945.00 & 95.00 \\
 \bottomrule
 \end{tabularx}
 \end{table*}
 
 
-The following Table (\ref{balanced}) shows that all models have major performance.
 
 
-\begin{table*}[h]	
+The following Table (\ref{balanced}) shows that all models have a better performance regarding to the model without balanced data.
+
+\begin{table*}[!h]	
 	\caption{Models performance over balanced data using undersampling}
     \label{balanced}
 \ContinuedFloat
@@ -387,19 +430,15 @@ The following Table (\ref{balanced}) shows that all models have major performanc
 \cmidrule(lr){2-3}   \cmidrule(lr){4-5}  \cmidrule(lr){6-7} \\
  &No-Default & Default & No-Default & Default & No-default & Default \\
 \midrule
-precision & 0.68 & 0.72 & 0.71 & 0.64 & 0.72 & 0.76 \\
-recall & 0.75 & 0.64 & 0.58 & 0.76 & 0.78 & 0.69 \\
-f1-score & 0.71 & 0.68 & 0.64 & 0.70 & 0.75 & 0.73 \\
-support & 96.00 & 95.00 & 96.00 & 95.00 & 96.00 & 95.00 \\  
+precision & 0.68 & 0.72 & 0.79 & 0.60 & 0.68 & 0.71 \\
+recall & 0.76 & 0.63 & 0.43 & 0.88 & 0.74 & 0.65 \\
+f1-score & 0.72 & 0.67 & 0.55 & 0.72 & 0.71 & 0.68 \\
+support & 96.00 & 95.00 & 96.00 & 95.00 & 96.00 & 95.00 \\
 \bottomrule
 \end{tabularx}
 \end{table*}
 
 
-
-
-
-\newpage
 \printbibliography
 
 
